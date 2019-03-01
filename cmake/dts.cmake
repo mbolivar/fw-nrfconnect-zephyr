@@ -16,7 +16,7 @@ set(GENERATED_DTS_BOARD_UNFIXED_H ${PROJECT_BINARY_DIR}/include/generated/genera
 set(GENERATED_DTS_BOARD_CONF      ${PROJECT_BINARY_DIR}/include/generated/generated_dts_board.conf)
 set(DTS_POST_CPP                  ${PROJECT_BINARY_DIR}/${BOARD}.dts.pre.tmp)
 
-set_ifndef(DTS_SOURCE ${BOARD_DIR}/${BOARD}.dts)
+set_ifndef(${IMAGE}DTS_SOURCE ${BOARD_DIR}/${BOARD}.dts)
 
 if(DEFINED DTS_COMMON_OVERLAYS)
   # TODO: remove this warning in version 1.16
@@ -37,22 +37,22 @@ list(REMOVE_DUPLICATES
   )
 
 set(dts_files
-  ${DTS_SOURCE}
+  ${${IMAGE}DTS_SOURCE}
   ${shield_dts_files}
   )
 
 # TODO: What to do about non-posix platforms where NOT CONFIG_HAS_DTS (xtensa)?
 # Drop support for NOT CONFIG_HAS_DTS perhaps?
-if(EXISTS ${DTS_SOURCE})
+if(EXISTS ${${IMAGE}DTS_SOURCE})
   set(SUPPORTS_DTS 1)
 else()
   set(SUPPORTS_DTS 0)
 endif()
 
 if(SUPPORTS_DTS)
-  if(DTC_OVERLAY_FILE)
+  if(${IMAGE}DTC_OVERLAY_FILE)
     # Convert from space-separated files into file list
-    string(REPLACE " " ";" DTC_OVERLAY_FILE_AS_LIST ${DTC_OVERLAY_FILE})
+    string(REPLACE " " ";" DTC_OVERLAY_FILE_AS_LIST ${${IMAGE}DTC_OVERLAY_FILE})
     list(APPEND
       dts_files
       ${DTC_OVERLAY_FILE_AS_LIST}
