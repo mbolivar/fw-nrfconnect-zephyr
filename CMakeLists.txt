@@ -1298,6 +1298,7 @@ if (CONFIG_MCUBOOT AND CONFIG_MCUBOOT_BUILD_S1_VARIANT)
 
   add_custom_target(
     s1_image_hex
+    ALL
     DEPENDS
     ${output}
     )
