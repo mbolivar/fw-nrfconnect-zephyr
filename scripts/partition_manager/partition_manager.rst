@@ -3,7 +3,7 @@
 Partition Manager
 #################
 
-Partition Manager is a Python script that sets the start address and size of all image partitions in a multi-image build context.
+The Partition Manager is a Python script that sets the start address and size of all image partitions in a multi-image build context.
 When creating an application that requires child images (for example, a bootloader), you can configure Partition Manager to control where in memory each image should be placed.
 
 See :ref:`ug_multi_image` for more information about multi-image builds.
@@ -47,7 +47,7 @@ This file must be stored in the same folder as the main :file:`CMakeLists.txt` f
    The root application does not need to define a :file:`pm.yml` file, because its partition size and placement is implied by the size and placement of the child image partitions.
    If a root application defines a :file:`pm.yml` file, it is silently ignored.
 
-Partition Manager configuration can be also provided by a subsystem.
+The Partition Manager configuration can be also provided by a subsystem.
 Subsystem Partition Manager configurations cannot define image partitions.
 
 There are some limitations when multiple images include the same subsystem which defines a Partition Manager configuration.
@@ -308,7 +308,8 @@ If you use this define in your code, the preprocessor can choose what code to in
 
 HEX files
 ---------
-Partition Manager may implicitly or explicitly assign a HEX file to a partition.
+
+The Partition Manager may implicitly or explicitly assign a HEX file to a partition.
 
 Image partitions are implicitly assigned the compiled HEX file, i.e. the HEX file that is generated when building the corresponding image.
 Container partitions are implicitly assigned the result of merging the HEX files that are assigned to the underlying partitions.
@@ -355,7 +356,7 @@ CMake
 -----
 The CMake variables from Partition Manager are typically used through `generator expressions`_, because these variables are only made available late in the CMake configure stage.
 To read a Partition Manager variable through a generator expression, the variable must be assigned as a target property.
-Partition Manager stores all variables as target properties on the ``partition_manager`` target,
+The Partition Manager stores all variables as target properties on the ``partition_manager`` target,
 which means they can be used in generator expressions in the following way.
 
 .. code-block:: none
