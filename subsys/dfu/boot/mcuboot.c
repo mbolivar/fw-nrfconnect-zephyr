@@ -83,6 +83,7 @@ struct mcuboot_v1_raw_header {
 #ifdef DT_FLASH_AREA_IMAGE_SCRATCH_ID
 #define FLASH_AREA_IMAGE_SCRATCH DT_FLASH_AREA_IMAGE_SCRATCH_ID
 #endif
+#endif /* USE_PARTITION_MANAGER */
 
 #ifdef CONFIG_MCUBOOT_TRAILER_SWAP_TYPE
 #define SWAP_TYPE_OFFS(bank_area) ((bank_area)->fa_size -\
